@@ -1,0 +1,7 @@
+db name
+
+group name
+"obj name", "type", immutable, "value",
+"obj name", "type", immutable, "value",
+"obj name", "type", immutable, "value",
+"obj name", "type", immutable, "value",
