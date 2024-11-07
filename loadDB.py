@@ -1,14 +1,8 @@
-import sys,cryptography
-import cryptography.fernet
+import sys
 
-with open(f"{sys.argv[1]}.txt","rb") as FILE:
-    dbStrEncypt = FILE.read()
+with open(f"{sys.argv[1]}.txt","r") as FILE:
+    dbStr = FILE.read()
 
-with open("filekey.key", "rb") as filekey:
-    key = filekey.read()
-
-fernet = cryptography.fernet.Fernet(key)
-dbStr = str(fernet.decrypt(dbStrEncypt))
 
 # Splits up imported db string into list for calling
 db = []
