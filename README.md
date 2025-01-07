@@ -1,6 +1,6 @@
 # plain-text-db
 a poorly made python db using plain text
 
-Not Currently fuctional
+Functional if you know what your doing
 
-work in progress
+Documantation is a work in progress

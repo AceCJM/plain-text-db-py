@@ -1,3 +1,0 @@
-test
-tempGroup
-Temp,bool,false,True
