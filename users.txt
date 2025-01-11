@@ -1,0 +1,8 @@
+users
+tempGroup
+Temp,bool,false,true
+false
+test
+users
+9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08,str,false,nick
+2e0b8d61fa2a6959d254b6ff5d0fb512249329097336a35568089933b49abdde,str,true,jeff

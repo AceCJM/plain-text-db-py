@@ -2,7 +2,7 @@ import sys,os
 
 # Global Variables:
 templateDB = "\ntempGroup\nTemp,bool,false,true" # Default DB contents
-args = ["-c","-a","-r","-l","-ddb","-e","-dt"]
+args = ["-c","-a","-r","-l","-ddb","-e","-dt","-dd"]
 
 def createDB(dbName): # Creaates default DB & writes to file
     db = [dbName,templateDB]
@@ -81,11 +81,13 @@ def appendDB(db,group,data): # Appends/replaces data in DB
     data = list(map(str.strip, data.strip("][").replace('"','').split(',')))
     name = data[0]
     del data[0]
+    
     try:
         db[group][name] = data
     except:
         db[group] = {name:data}
     writeFile(db["name"],db)
+    
     return db
 
 def readData(db,group,name):
@@ -95,6 +97,8 @@ def deleteDB(fname):
     os.remove(f"{fname}.txt")
 
 def changeValue(db,group,name,data):
+    if db[group][name][1] == "true":
+        return "immutable object"
     db[group][name][2] = data
     writeFile(db["name"],db)
 
@@ -126,7 +130,6 @@ if __name__ == "__main__":
             print(readData(db,group,name))
         if i == "-e":
             data = input("Input Data > ")
-            changeValue(db,group,name,data)
-            print(readData(db,group,name))
+            print(changeValue(db,group,name,data))
         if i == "-dt":
             print(dataType(db,group,name))
