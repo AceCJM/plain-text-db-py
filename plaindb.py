@@ -77,11 +77,9 @@ def printDB(fname): # Iterates DB and prints contents
         else:
             print(i)
 
-def appendDB(db,group,data): # Appends/replaces data in DB
-    data = list(map(str.strip, data.strip("][").replace('"','').split(',')))
-    name = data[0]
-    del data[0]
-    
+def appendDB(db,group,name,type,imm,data): # Appends/replaces data in DB
+    data = [type,imm,data]
+    print(data)    
     try:
         db[group][name] = data
     except:
@@ -106,6 +104,20 @@ def dataType(db,group,name):
     dtype = db[group][name][0]
     return dtype
 
+def deleteData(db,group,name):
+    if db[group][name][2] != "true":
+        del db[group][name]
+        writeFile(db["name"],db)
+        return "success"
+    else:
+        return "immutable object"
+
+def deleteGroup(db,group):
+    del db[group]
+    writeFile(db["name"],db)
+    return "success"
+
+
 if __name__ == "__main__":
     cli_args = sys.argv[1:]
     if cli_args[0] in args:
@@ -122,7 +134,7 @@ if __name__ == "__main__":
         if i == "-l":
             printDB(dbName)
         if i == "-ddb":
-            deleteDB(dbName)
+            print(deleteDB(dbName))
         if i == "-a":
             data = input("Input Data > ")
             print(appendDB(db,group,data))
