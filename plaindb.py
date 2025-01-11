@@ -4,6 +4,14 @@ import sys,os
 templateDB = "\ntempGroup\nTemp,bool,false,true" # Default DB contents
 args = ["-c","-a","-r","-l","-ddb","-e","-dt","-dd"]
 
+
+
+############################################################
+#               DB FILE MANAGEMENT FUNCTIONS              #
+############################################################
+def deleteDB(fname):
+    os.remove(f"{fname}.txt")
+
 def createDB(dbName): # Creaates default DB & writes to file
     db = [dbName,templateDB]
     dbStr = "".join(db)
@@ -77,6 +85,11 @@ def printDB(fname): # Iterates DB and prints contents
         else:
             print(i)
 
+
+############################################################
+#                DB DATA MANAGMENT FUNCTIONS               #
+############################################################
+
 def appendDB(db,group,name,type,imm,data): # Appends/replaces data in DB
     data = [type,imm,data]
     print(data)    
@@ -90,9 +103,6 @@ def appendDB(db,group,name,type,imm,data): # Appends/replaces data in DB
 
 def readData(db,group,name):
     return db[group][name]
-
-def deleteDB(fname):
-    os.remove(f"{fname}.txt")
 
 def changeValue(db,group,name,data):
     if db[group][name][1] == "true":
@@ -117,6 +127,11 @@ def deleteGroup(db,group):
     writeFile(db["name"],db)
     return "success"
 
+
+
+############################################################
+#                       CLI INTERFASE                      #
+############################################################
 
 if __name__ == "__main__":
     cli_args = sys.argv[1:]
