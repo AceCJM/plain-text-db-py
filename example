@@ -1,0 +1,11 @@
+dbName
+(users)
+"user1",str,True,"Alice"
+"user2",str,False,"Bob"
+"user3",str,True,"Charlie"
+(settings)
+"theme",str,False,"dark"
+"volume",int,False,"75"
+"notifications",bool,True,"True"
+(group1)
+obj1,type1,true,value2
