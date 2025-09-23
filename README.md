@@ -30,4 +30,7 @@ print(value)  # Output: Alice
 
 # Delete an object
 db.delete("users", "user2")
+
+# Retrieve all table entries
+db.retrieve_all("settings")
 ```
