@@ -82,7 +82,7 @@ class PlainDB:
                     f"Cannot modify immutable object '{obj_name}' in table '{table_name}'."
                 )
                 return
-        self.db[table_name][obj_name] = [obj_type, str(immutable).lower(), value]
+        self.db[table_name][obj_name] = [obj_type, str(immutable).lower().capitalize(), value]
         self.save_db()
 
     def get(self, table_name: str, obj_name: str) -> str:
@@ -122,4 +122,19 @@ class PlainDB:
         parsed_table = []
         for entry in table:
             parsed_table.append([entry] + table[entry])
+        return parsed_table
+    
+    def query(self, table_name: str, where_clause_column: int, where_clause_value: str) -> list[list[str]]:
+        """Retirves all object from a table where clause is met.
+        Args:
+            table_name (str): The name of the table.
+        Returns:
+            list[list]: All data where clause is met
+        """
+        table = self.db[table_name]
+        parsed_table = []
+        for entry in table:
+            print(table[entry])
+            if table[entry][where_clause_column-1] == where_clause_value:
+                parsed_table.append([entry] + table[entry])
         return parsed_table
